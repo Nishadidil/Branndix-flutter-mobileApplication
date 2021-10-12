@@ -1,57 +1,31 @@
-define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/animation/curves.dart', 'packages/flutter/src/widgets/scroll_metrics.dart', 'packages/flutter/src/painting/basic_types.dart', 'packages/flutter/src/physics/spring_simulation.dart', 'packages/flutter/src/physics/tolerance.dart', 'packages/flutter/src/gestures/recognizer.dart', 'packages/flutter/src/rendering/sliver.dart', 'packages/flutter/src/widgets/sliver_fill.dart', 'packages/flutter/src/rendering/viewport_offset.dart', 'packages/flutter/src/foundation/debug.dart'], (function load__packages__flutter__src__widgets__page_view_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__animation__curves$46dart, packages__flutter__src__widgets__scroll_metrics$46dart, packages__flutter__src__painting__basic_types$46dart, packages__flutter__src__physics__spring_simulation$46dart, packages__flutter__src__physics__tolerance$46dart, packages__flutter__src__gestures__recognizer$46dart, packages__flutter__src__rendering__sliver$46dart, packages__flutter__src__widgets__sliver_fill$46dart, packages__flutter__src__rendering__viewport_offset$46dart, packages__flutter__src__foundation__debug$46dart) {
+define(['dart_sdk', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/painting/basic_types.dart', 'packages/flutter/src/rendering/layout_helper.dart', 'packages/flutter/src/foundation/debug.dart'], (function load__packages__flutter__src__rendering__wrap_dart(dart_sdk, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__painting__basic_types$46dart, packages__flutter__src__rendering__layout_helper$46dart, packages__flutter__src__foundation__debug$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const async = dart_sdk.async;
-  const math = dart_sdk.math;
-  const _js_helper = dart_sdk._js_helper;
   const ui = dart_sdk.ui;
+  const math = dart_sdk.math;
   const _interceptors = dart_sdk._interceptors;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const scroll_controller = packages__flutter__src__widgets__widget_span$46dart.src__widgets__scroll_controller;
-  const scroll_position = packages__flutter__src__widgets__widget_span$46dart.src__widgets__scroll_position;
-  const page_storage = packages__flutter__src__widgets__widget_span$46dart.src__widgets__page_storage;
-  const scroll_position_with_single_context = packages__flutter__src__widgets__widget_span$46dart.src__widgets__scroll_position_with_single_context;
-  const scroll_physics = packages__flutter__src__widgets__widget_span$46dart.src__widgets__scroll_physics;
-  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
-  const sliver = packages__flutter__src__widgets__widget_span$46dart.src__widgets__sliver;
-  const scroll_configuration = packages__flutter__src__widgets__widget_span$46dart.src__widgets__scroll_configuration;
-  const debug = packages__flutter__src__widgets__widget_span$46dart.src__widgets__debug;
-  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
-  const notification_listener = packages__flutter__src__widgets__widget_span$46dart.src__widgets__notification_listener;
-  const scroll_notification = packages__flutter__src__widgets__widget_span$46dart.src__widgets__scroll_notification;
-  const scrollable = packages__flutter__src__widgets__widget_span$46dart.src__widgets__scrollable;
-  const viewport = packages__flutter__src__widgets__widget_span$46dart.src__widgets__viewport;
-  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
-  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
-  const scroll_metrics = packages__flutter__src__widgets__scroll_metrics$46dart.src__widgets__scroll_metrics;
+  const box = packages__flutter__src__rendering__layer$46dart.src__rendering__box;
+  const object = packages__flutter__src__rendering__layer$46dart.src__rendering__object;
+  const layer = packages__flutter__src__rendering__layer$46dart.src__rendering__layer;
   const basic_types = packages__flutter__src__painting__basic_types$46dart.src__painting__basic_types;
-  const spring_simulation = packages__flutter__src__physics__spring_simulation$46dart.src__physics__spring_simulation;
-  const tolerance = packages__flutter__src__physics__tolerance$46dart.src__physics__tolerance;
-  const recognizer = packages__flutter__src__gestures__recognizer$46dart.src__gestures__recognizer;
-  const viewport$ = packages__flutter__src__rendering__sliver$46dart.src__rendering__viewport;
-  const sliver_fill = packages__flutter__src__widgets__sliver_fill$46dart.src__widgets__sliver_fill;
-  const viewport_offset = packages__flutter__src__rendering__viewport_offset$46dart.src__rendering__viewport_offset;
+  const layout_helper = packages__flutter__src__rendering__layout_helper$46dart.src__rendering__layout_helper;
   const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
-  var page_view = Object.create(dart.library);
+  var wrap = Object.create(dart.library);
+  var $runtimeType = dartx.runtimeType;
   var $isNotEmpty = dartx.isNotEmpty;
+  var $add = dartx.add;
   var $length = dartx.length;
-  var $toDouble = dartx.toDouble;
-  var $round = dartx.round;
-  var $clamp = dartx.clamp;
-  var $roundToDouble = dartx.roundToDouble;
-  var $abs = dartx.abs;
-  var $noSuchMethod = dartx.noSuchMethod;
+  var $_get = dartx._get;
   dart._checkModuleNullSafetyMode(true);
   var T = {
-    doubleN: () => (T.doubleN = dart.constFn(dart.nullable(core.double)))(),
-    NotificationListenerOfScrollNotification: () => (T.NotificationListenerOfScrollNotification = dart.constFn(notification_listener.NotificationListener$(scroll_notification.ScrollNotification)))(),
-    ScrollNotificationTobool: () => (T.ScrollNotificationTobool = dart.constFn(dart.fnType(core.bool, [scroll_notification.ScrollNotification])))(),
-    JSArrayOfWidget: () => (T.JSArrayOfWidget = dart.constFn(_interceptors.JSArray$(framework.Widget)))(),
-    BuildContextAndViewportOffsetToViewport: () => (T.BuildContextAndViewportOffsetToViewport = dart.constFn(dart.fnType(viewport.Viewport, [framework.BuildContext, viewport_offset.ViewportOffset])))(),
+    RenderBoxAndBoxConstraintsToSize: () => (T.RenderBoxAndBoxConstraintsToSize = dart.constFn(dart.fnType(ui.Size, [box.RenderBox, box.BoxConstraints])))(),
+    JSArrayOf_RunMetrics: () => (T.JSArrayOf_RunMetrics = dart.constFn(_interceptors.JSArray$(wrap._RunMetrics)))(),
     EnumPropertyOfAxis: () => (T.EnumPropertyOfAxis = dart.constFn(diagnostics.EnumProperty$(basic_types.Axis)))(),
-    DiagnosticsPropertyOfPageController: () => (T.DiagnosticsPropertyOfPageController = dart.constFn(diagnostics.DiagnosticsProperty$(page_view.PageController)))(),
-    DiagnosticsPropertyOfScrollPhysics: () => (T.DiagnosticsPropertyOfScrollPhysics = dart.constFn(diagnostics.DiagnosticsProperty$(scroll_physics.ScrollPhysics)))()
+    EnumPropertyOfWrapAlignment: () => (T.EnumPropertyOfWrapAlignment = dart.constFn(diagnostics.EnumProperty$(wrap.WrapAlignment)))(),
+    EnumPropertyOfTextDirection: () => (T.EnumPropertyOfTextDirection = dart.constFn(diagnostics.EnumProperty$(ui.TextDirection)))(),
+    EnumPropertyOfVerticalDirection: () => (T.EnumPropertyOfVerticalDirection = dart.constFn(diagnostics.EnumProperty$(basic_types.VerticalDirection)))()
   };
   const CT = Object.create({
     _: () => (C, CT)
@@ -59,990 +33,862 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
   dart.defineLazy(CT, {
     get C0() {
       return C[0] = dart.const({
-        __proto__: core.Duration.prototype,
-        [Duration__duration]: 0
+        __proto__: wrap.WrapAlignment.prototype,
+        [_name$]: "WrapAlignment.start",
+        index: 0
       });
     },
     get C1() {
       return C[1] = dart.const({
-        __proto__: curves.Cubic.prototype,
-        [Cubic_d]: 1,
-        [Cubic_c]: 0.25,
-        [Cubic_b]: 0.1,
-        [Cubic_a]: 0.25
+        __proto__: wrap.WrapAlignment.prototype,
+        [_name$]: "WrapAlignment.end",
+        index: 1
       });
     },
     get C2() {
       return C[2] = dart.const({
-        __proto__: scroll_position.ScrollPositionAlignmentPolicy.prototype,
-        [_name]: "ScrollPositionAlignmentPolicy.explicit",
-        index: 0
+        __proto__: wrap.WrapAlignment.prototype,
+        [_name$]: "WrapAlignment.center",
+        index: 2
       });
     },
     get C3() {
-      return C[3] = dart.const(new _js_helper.PrivateSymbol.new('_maxScrollExtent', _maxScrollExtent));
+      return C[3] = dart.const({
+        __proto__: wrap.WrapAlignment.prototype,
+        [_name$]: "WrapAlignment.spaceBetween",
+        index: 3
+      });
     },
     get C4() {
-      return C[4] = dart.const(new _js_helper.PrivateSymbol.new('_minScrollExtent', _minScrollExtent));
+      return C[4] = dart.const({
+        __proto__: wrap.WrapAlignment.prototype,
+        [_name$]: "WrapAlignment.spaceAround",
+        index: 4
+      });
     },
     get C5() {
-      return C[5] = dart.const(new _js_helper.PrivateSymbol.new('_viewportDimension', _viewportDimension));
+      return C[5] = dart.const({
+        __proto__: wrap.WrapAlignment.prototype,
+        [_name$]: "WrapAlignment.spaceEvenly",
+        index: 5
+      });
     },
     get C6() {
-      return C[6] = dart.const(new _js_helper.PrivateSymbol.new('_pixels', _pixels));
+      return C[6] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2, C[3] || CT.C3, C[4] || CT.C4, C[5] || CT.C5], wrap.WrapAlignment);
     },
     get C7() {
       return C[7] = dart.const({
-        __proto__: basic_types.Axis.prototype,
-        [_name$]: "Axis.horizontal",
+        __proto__: wrap.WrapCrossAlignment.prototype,
+        [_name$]: "WrapCrossAlignment.start",
         index: 0
       });
     },
     get C8() {
-      return C[8] = dart.constList([], framework.Widget);
+      return C[8] = dart.const({
+        __proto__: wrap.WrapCrossAlignment.prototype,
+        [_name$]: "WrapCrossAlignment.end",
+        index: 1
+      });
     },
     get C9() {
       return C[9] = dart.const({
-        __proto__: recognizer.DragStartBehavior.prototype,
-        [_name$0]: "DragStartBehavior.start",
-        index: 1
+        __proto__: wrap.WrapCrossAlignment.prototype,
+        [_name$]: "WrapCrossAlignment.center",
+        index: 2
       });
     },
     get C10() {
-      return C[10] = dart.const({
-        __proto__: ui.Clip.prototype,
-        [_name$1]: "Clip.hardEdge",
-        index: 1
-      });
+      return C[10] = dart.constList([C[7] || CT.C7, C[8] || CT.C8, C[9] || CT.C9], wrap.WrapCrossAlignment);
     },
     get C11() {
       return C[11] = dart.const({
         __proto__: basic_types.Axis.prototype,
-        [_name$]: "Axis.vertical",
+        [_name]: "Axis.horizontal",
+        index: 0
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: basic_types.VerticalDirection.prototype,
+        [_name]: "VerticalDirection.down",
         index: 1
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: ui.Clip.prototype,
+        [_name$0]: "Clip.none",
+        index: 0
       });
     },
     get C14() {
       return C[14] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "viewportFraction",
-        [_Location_column]: 17,
-        [_Location_line]: 943,
-        [_Location_file]: null
+        __proto__: basic_types.Axis.prototype,
+        [_name]: "Axis.vertical",
+        index: 1
       });
     },
     get C15() {
-      return C[15] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "delegate",
-        [_Location_column]: 17,
-        [_Location_line]: 944,
-        [_Location_file]: null
-      });
-    },
-    get C13() {
-      return C[13] = dart.constList([C[14] || CT.C14, C[15] || CT.C15], widget_inspector._Location);
-    },
-    get C12() {
-      return C[12] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[13] || CT.C13,
-        [_Location_name]: null,
-        [_Location_column]: 15,
-        [_Location_line]: 942,
-        [_Location_file]: "file:///C:/src/flutter_windows_2.2.3-stable/flutter/packages/flutter/lib/src/widgets/page_view.dart"
-      });
-    },
-    get C18() {
-      return C[18] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "cacheExtent",
-        [_Location_column]: 13,
-        [_Location_line]: 936,
-        [_Location_file]: null
-      });
-    },
-    get C19() {
-      return C[19] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "cacheExtentStyle",
-        [_Location_column]: 13,
-        [_Location_line]: 937,
-        [_Location_file]: null
-      });
-    },
-    get C20() {
-      return C[20] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "axisDirection",
-        [_Location_column]: 13,
-        [_Location_line]: 938,
-        [_Location_file]: null
-      });
-    },
-    get C21() {
-      return C[21] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "offset",
-        [_Location_column]: 13,
-        [_Location_line]: 939,
-        [_Location_file]: null
-      });
-    },
-    get C22() {
-      return C[22] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "clipBehavior",
-        [_Location_column]: 13,
-        [_Location_line]: 940,
-        [_Location_file]: null
-      });
-    },
-    get C23() {
-      return C[23] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "slivers",
-        [_Location_column]: 13,
-        [_Location_line]: 941,
-        [_Location_file]: null
-      });
-    },
-    get C17() {
-      return C[17] = dart.constList([C[18] || CT.C18, C[19] || CT.C19, C[20] || CT.C20, C[21] || CT.C21, C[22] || CT.C22, C[23] || CT.C23], widget_inspector._Location);
-    },
-    get C16() {
-      return C[16] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[17] || CT.C17,
-        [_Location_name]: null,
-        [_Location_column]: 18,
-        [_Location_line]: 932,
-        [_Location_file]: "file:///C:/src/flutter_windows_2.2.3-stable/flutter/packages/flutter/lib/src/widgets/page_view.dart"
-      });
-    },
-    get C26() {
-      return C[26] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "dragStartBehavior",
-        [_Location_column]: 9,
-        [_Location_line]: 925,
-        [_Location_file]: null
-      });
-    },
-    get C27() {
-      return C[27] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "axisDirection",
-        [_Location_column]: 9,
-        [_Location_line]: 926,
-        [_Location_file]: null
-      });
-    },
-    get C28() {
-      return C[28] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "controller",
-        [_Location_column]: 9,
-        [_Location_line]: 927,
-        [_Location_file]: null
-      });
-    },
-    get C29() {
-      return C[29] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "physics",
-        [_Location_column]: 9,
-        [_Location_line]: 928,
-        [_Location_file]: null
-      });
-    },
-    get C30() {
-      return C[30] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "restorationId",
-        [_Location_column]: 9,
-        [_Location_line]: 929,
-        [_Location_file]: null
-      });
-    },
-    get C31() {
-      return C[31] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "scrollBehavior",
-        [_Location_column]: 9,
-        [_Location_line]: 930,
-        [_Location_file]: null
-      });
-    },
-    get C32() {
-      return C[32] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "viewportBuilder",
-        [_Location_column]: 9,
-        [_Location_line]: 931,
-        [_Location_file]: null
-      });
-    },
-    get C25() {
-      return C[25] = dart.constList([C[26] || CT.C26, C[27] || CT.C27, C[28] || CT.C28, C[29] || CT.C29, C[30] || CT.C30, C[31] || CT.C31, C[32] || CT.C32], widget_inspector._Location);
-    },
-    get C24() {
-      return C[24] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[25] || CT.C25,
-        [_Location_name]: null,
-        [_Location_column]: 14,
-        [_Location_line]: 924,
-        [_Location_file]: "file:///C:/src/flutter_windows_2.2.3-stable/flutter/packages/flutter/lib/src/widgets/page_view.dart"
-      });
-    },
-    get C35() {
-      return C[35] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "onNotification",
-        [_Location_column]: 7,
-        [_Location_line]: 913,
-        [_Location_file]: null
-      });
-    },
-    get C36() {
-      return C[36] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 7,
-        [_Location_line]: 924,
-        [_Location_file]: null
-      });
-    },
-    get C34() {
-      return C[34] = dart.constList([C[35] || CT.C35, C[36] || CT.C36], widget_inspector._Location);
-    },
-    get C33() {
-      return C[33] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[34] || CT.C34,
-        [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 912,
-        [_Location_file]: "file:///C:/src/flutter_windows_2.2.3-stable/flutter/packages/flutter/lib/src/widgets/page_view.dart"
-      });
-    },
-    get C37() {
-      return C[37] = dart.const({
-        __proto__: page_view.PageScrollPhysics.prototype,
-        [ScrollPhysics_parent]: null
-      });
+      return C[15] = dart.fn(layout_helper.ChildLayoutHelper.dryLayoutChild, T.RenderBoxAndBoxConstraintsToSize());
     }
   }, false);
-  var C = Array(38).fill(void 0);
+  var C = Array(16).fill(void 0);
   var I = [
-    "file:///C:/src/flutter_windows_2.2.3-stable/flutter/packages/flutter/lib/src/widgets/page_view.dart",
-    "package:flutter/src/widgets/page_view.dart"
+    "package:flutter/src/rendering/wrap.dart",
+    "file:///C:/src/flutter_windows_2.2.3-stable/flutter/packages/flutter/lib/src/rendering/wrap.dart"
   ];
-  var initialPage$ = dart.privateName(page_view, "PageController.initialPage");
-  var keepPage$ = dart.privateName(page_view, "PageController.keepPage");
-  var viewportFraction$ = dart.privateName(page_view, "PageController.viewportFraction");
-  page_view.PageController = class PageController extends scroll_controller.ScrollController {
-    get initialPage() {
-      return this[initialPage$];
-    }
-    set initialPage(value) {
-      super.initialPage = value;
-    }
-    get keepPage() {
-      return this[keepPage$];
-    }
-    set keepPage(value) {
-      super.keepPage = value;
-    }
-    get viewportFraction() {
-      return this[viewportFraction$];
-    }
-    set viewportFraction(value) {
-      super.viewportFraction = value;
-    }
-    get page() {
-      if (!this.positions[$isNotEmpty]) dart.assertFailed("PageController.page cannot be accessed before a PageView is built with it.", I[0], 172, 7, "positions.isNotEmpty");
-      if (!(this.positions[$length] === 1)) dart.assertFailed("The page property cannot be read when multiple PageViews are attached to " + "the same PageController.", I[0], 176, 7, "positions.length == 1");
-      let position = page_view._PagePosition.as(this.position);
-      return position.page;
-    }
-    animateToPage(page, opts) {
-      let duration = opts && 'duration' in opts ? opts.duration : null;
-      let curve = opts && 'curve' in opts ? opts.curve : null;
-      let position = page_view._PagePosition.as(this.position);
-      return position.animateTo(position.getPixelsFromPage(page[$toDouble]()), {duration: duration, curve: curve});
-    }
-    jumpToPage(page) {
-      let position = page_view._PagePosition.as(this.position);
-      position.jumpTo(position.getPixelsFromPage(page[$toDouble]()));
-    }
-    nextPage(opts) {
-      let duration = opts && 'duration' in opts ? opts.duration : null;
-      let curve = opts && 'curve' in opts ? opts.curve : null;
-      return this.animateToPage(dart.nullCheck(this.page)[$round]() + 1, {duration: duration, curve: curve});
-    }
-    previousPage(opts) {
-      let duration = opts && 'duration' in opts ? opts.duration : null;
-      let curve = opts && 'curve' in opts ? opts.curve : null;
-      return this.animateToPage(dart.nullCheck(this.page)[$round]() - 1, {duration: duration, curve: curve});
-    }
-    createScrollPosition(physics, context, oldPosition) {
-      return new page_view._PagePosition.new({physics: physics, context: context, initialPage: this.initialPage, keepPage: this.keepPage, viewportFraction: this.viewportFraction, oldPosition: oldPosition});
-    }
-    attach(position) {
-      super.attach(position);
-      let pagePosition = page_view._PagePosition.as(position);
-      pagePosition.viewportFraction = this.viewportFraction;
+  var _name$ = dart.privateName(wrap, "_name");
+  wrap.WrapAlignment = class WrapAlignment extends core.Object {
+    toString() {
+      return this[_name$];
     }
   };
-  (page_view.PageController.new = function(opts) {
-    let initialPage = opts && 'initialPage' in opts ? opts.initialPage : 0;
-    let keepPage = opts && 'keepPage' in opts ? opts.keepPage : true;
-    let viewportFraction = opts && 'viewportFraction' in opts ? opts.viewportFraction : 1;
-    this[initialPage$] = initialPage;
-    this[keepPage$] = keepPage;
-    this[viewportFraction$] = viewportFraction;
-    if (!(initialPage !== null)) dart.assertFailed(null, I[0], 122, 15, "initialPage != null");
-    if (!(keepPage !== null)) dart.assertFailed(null, I[0], 123, 15, "keepPage != null");
-    if (!(viewportFraction !== null)) dart.assertFailed(null, I[0], 124, 15, "viewportFraction != null");
-    if (!(viewportFraction > 0.0)) dart.assertFailed(null, I[0], 125, 15, "viewportFraction > 0.0");
-    page_view.PageController.__proto__.new.call(this);
+  (wrap.WrapAlignment.new = function(index, _name) {
+    this.index = index;
+    this[_name$] = _name;
     ;
-  }).prototype = page_view.PageController.prototype;
-  dart.addTypeTests(page_view.PageController);
-  dart.addTypeCaches(page_view.PageController);
-  dart.setMethodSignature(page_view.PageController, () => ({
-    __proto__: dart.getMethods(page_view.PageController.__proto__),
-    animateToPage: dart.fnType(async.Future$(dart.void), [core.int], {}, {curve: curves.Curve, duration: core.Duration}),
-    jumpToPage: dart.fnType(dart.void, [core.int]),
-    nextPage: dart.fnType(async.Future$(dart.void), [], {}, {curve: curves.Curve, duration: core.Duration}),
-    previousPage: dart.fnType(async.Future$(dart.void), [], {}, {curve: curves.Curve, duration: core.Duration})
+  }).prototype = wrap.WrapAlignment.prototype;
+  dart.addTypeTests(wrap.WrapAlignment);
+  dart.addTypeCaches(wrap.WrapAlignment);
+  dart.setLibraryUri(wrap.WrapAlignment, I[0]);
+  dart.setFieldSignature(wrap.WrapAlignment, () => ({
+    __proto__: dart.getFields(wrap.WrapAlignment.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
   }));
-  dart.setGetterSignature(page_view.PageController, () => ({
-    __proto__: dart.getGetters(page_view.PageController.__proto__),
-    page: dart.nullable(core.double)
-  }));
-  dart.setLibraryUri(page_view.PageController, I[1]);
-  dart.setFieldSignature(page_view.PageController, () => ({
-    __proto__: dart.getFields(page_view.PageController.__proto__),
-    initialPage: dart.finalFieldType(core.int),
-    keepPage: dart.finalFieldType(core.bool),
-    viewportFraction: dart.finalFieldType(core.double)
-  }));
-  var viewportFraction$0 = dart.privateName(page_view, "PageMetrics.viewportFraction");
-  page_view.PageMetrics = class PageMetrics extends scroll_metrics.FixedScrollMetrics {
-    get viewportFraction() {
-      return this[viewportFraction$0];
-    }
-    set viewportFraction(value) {
-      super.viewportFraction = value;
-    }
-    copyWith(opts) {
-      let t0, t0$, t0$0, t0$1, t0$2, t0$3;
-      let minScrollExtent = opts && 'minScrollExtent' in opts ? opts.minScrollExtent : null;
-      let maxScrollExtent = opts && 'maxScrollExtent' in opts ? opts.maxScrollExtent : null;
-      let pixels = opts && 'pixels' in opts ? opts.pixels : null;
-      let viewportDimension = opts && 'viewportDimension' in opts ? opts.viewportDimension : null;
-      let axisDirection = opts && 'axisDirection' in opts ? opts.axisDirection : null;
-      let viewportFraction = opts && 'viewportFraction' in opts ? opts.viewportFraction : null;
-      return new page_view.PageMetrics.new({minScrollExtent: (t0 = minScrollExtent, t0 == null ? this.hasContentDimensions ? this.minScrollExtent : null : t0), maxScrollExtent: (t0$ = maxScrollExtent, t0$ == null ? this.hasContentDimensions ? this.maxScrollExtent : null : t0$), pixels: (t0$0 = pixels, t0$0 == null ? this.hasPixels ? this.pixels : null : t0$0), viewportDimension: (t0$1 = viewportDimension, t0$1 == null ? this.hasViewportDimension ? this.viewportDimension : null : t0$1), axisDirection: (t0$2 = axisDirection, t0$2 == null ? this.axisDirection : t0$2), viewportFraction: (t0$3 = viewportFraction, t0$3 == null ? this.viewportFraction : t0$3)});
-    }
-    get page() {
-      return math.max(core.double, 0.0, this.pixels[$clamp](this.minScrollExtent, this.maxScrollExtent)) / math.max(core.num, 1.0, this.viewportDimension * this.viewportFraction);
+  dart.defineExtensionMethods(wrap.WrapAlignment, ['toString']);
+  wrap.WrapAlignment.start = C[0] || CT.C0;
+  wrap.WrapAlignment.end = C[1] || CT.C1;
+  wrap.WrapAlignment.center = C[2] || CT.C2;
+  wrap.WrapAlignment.spaceBetween = C[3] || CT.C3;
+  wrap.WrapAlignment.spaceAround = C[4] || CT.C4;
+  wrap.WrapAlignment.spaceEvenly = C[5] || CT.C5;
+  wrap.WrapAlignment.values = C[6] || CT.C6;
+  wrap.WrapCrossAlignment = class WrapCrossAlignment extends core.Object {
+    toString() {
+      return this[_name$];
     }
   };
-  (page_view.PageMetrics.new = function(opts) {
-    let minScrollExtent = opts && 'minScrollExtent' in opts ? opts.minScrollExtent : null;
-    let maxScrollExtent = opts && 'maxScrollExtent' in opts ? opts.maxScrollExtent : null;
-    let pixels = opts && 'pixels' in opts ? opts.pixels : null;
-    let viewportDimension = opts && 'viewportDimension' in opts ? opts.viewportDimension : null;
-    let axisDirection = opts && 'axisDirection' in opts ? opts.axisDirection : null;
-    let viewportFraction = opts && 'viewportFraction' in opts ? opts.viewportFraction : null;
-    this[viewportFraction$0] = viewportFraction;
-    page_view.PageMetrics.__proto__.new.call(this, {minScrollExtent: minScrollExtent, maxScrollExtent: maxScrollExtent, pixels: pixels, viewportDimension: viewportDimension, axisDirection: axisDirection});
+  (wrap.WrapCrossAlignment.new = function(index, _name) {
+    this.index = index;
+    this[_name$] = _name;
     ;
-  }).prototype = page_view.PageMetrics.prototype;
-  dart.addTypeTests(page_view.PageMetrics);
-  dart.addTypeCaches(page_view.PageMetrics);
-  dart.setMethodSignature(page_view.PageMetrics, () => ({
-    __proto__: dart.getMethods(page_view.PageMetrics.__proto__),
-    copyWith: dart.fnType(page_view.PageMetrics, [], {axisDirection: dart.nullable(basic_types.AxisDirection), maxScrollExtent: dart.nullable(core.double), minScrollExtent: dart.nullable(core.double), pixels: dart.nullable(core.double), viewportDimension: dart.nullable(core.double), viewportFraction: dart.nullable(core.double)}, {})
+  }).prototype = wrap.WrapCrossAlignment.prototype;
+  dart.addTypeTests(wrap.WrapCrossAlignment);
+  dart.addTypeCaches(wrap.WrapCrossAlignment);
+  dart.setLibraryUri(wrap.WrapCrossAlignment, I[0]);
+  dart.setFieldSignature(wrap.WrapCrossAlignment, () => ({
+    __proto__: dart.getFields(wrap.WrapCrossAlignment.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
   }));
-  dart.setGetterSignature(page_view.PageMetrics, () => ({
-    __proto__: dart.getGetters(page_view.PageMetrics.__proto__),
-    page: dart.nullable(core.double)
-  }));
-  dart.setLibraryUri(page_view.PageMetrics, I[1]);
-  dart.setFieldSignature(page_view.PageMetrics, () => ({
-    __proto__: dart.getFields(page_view.PageMetrics.__proto__),
-    viewportFraction: dart.finalFieldType(core.double)
-  }));
-  var _viewportFraction = dart.privateName(page_view, "_viewportFraction");
-  var _pageToUseOnStartup = dart.privateName(page_view, "_pageToUseOnStartup");
-  var Duration__duration = dart.privateName(core, "Duration._duration");
-  var Cubic_d = dart.privateName(curves, "Cubic.d");
-  var Cubic_c = dart.privateName(curves, "Cubic.c");
-  var Cubic_b = dart.privateName(curves, "Cubic.b");
-  var Cubic_a = dart.privateName(curves, "Cubic.a");
-  var _name = dart.privateName(scroll_position, "_name");
-  var _initialPageOffset = dart.privateName(page_view, "_initialPageOffset");
-  var _maxScrollExtent = dart.privateName(page_view, "_maxScrollExtent");
-  var _maxScrollExtent$ = dart.privateName(scroll_metrics, "_maxScrollExtent");
-  var _minScrollExtent = dart.privateName(page_view, "_minScrollExtent");
-  var _minScrollExtent$ = dart.privateName(scroll_metrics, "_minScrollExtent");
-  var _viewportDimension = dart.privateName(page_view, "_viewportDimension");
-  var _viewportDimension$ = dart.privateName(scroll_metrics, "_viewportDimension");
-  var _pixels = dart.privateName(page_view, "_pixels");
-  var _pixels$ = dart.privateName(scroll_metrics, "_pixels");
-  page_view._PagePosition = class _PagePosition extends scroll_position_with_single_context.ScrollPositionWithSingleContext {
-    ensureVisible(object, opts) {
-      let alignment = opts && 'alignment' in opts ? opts.alignment : 0;
-      let duration = opts && 'duration' in opts ? opts.duration : C[0] || CT.C0;
-      let curve = opts && 'curve' in opts ? opts.curve : C[1] || CT.C1;
-      let alignmentPolicy = opts && 'alignmentPolicy' in opts ? opts.alignmentPolicy : C[2] || CT.C2;
-      let targetRenderObject = opts && 'targetRenderObject' in opts ? opts.targetRenderObject : null;
-      return super.ensureVisible(object, {alignment: alignment, duration: duration, curve: curve, alignmentPolicy: alignmentPolicy, targetRenderObject: null});
-    }
-    get viewportFraction() {
-      return this[_viewportFraction];
-    }
-    set viewportFraction(value) {
-      if (this[_viewportFraction] === value) return;
-      let oldPage = this.page;
-      this[_viewportFraction] = value;
-      if (oldPage != null) this.forcePixels(this.getPixelsFromPage(oldPage));
-    }
-    get [_initialPageOffset]() {
-      return math.max(core.double, 0.0, this.viewportDimension * (this.viewportFraction - 1) / 2);
-    }
-    getPageFromPixels(pixels, viewportDimension) {
-      let actual = math.max(core.double, 0.0, pixels - this[_initialPageOffset]) / math.max(core.num, 1.0, viewportDimension * this.viewportFraction);
-      let round = actual[$roundToDouble]();
-      if ((actual - round)[$abs]() < 1e-10) {
-        return round;
-      }
-      return actual;
-    }
-    getPixelsFromPage(page) {
-      return page * this.viewportDimension * this.viewportFraction + this[_initialPageOffset];
-    }
-    get page() {
-      if (!(!this.hasPixels || this.minScrollExtent !== null && this.maxScrollExtent !== null)) dart.assertFailed("Page value is only available after content dimensions are established.", I[0], 388, 7, "!hasPixels || (minScrollExtent != null && maxScrollExtent != null)");
-      return !this.hasPixels ? null : this.getPageFromPixels(this.pixels[$clamp](this.minScrollExtent, this.maxScrollExtent), this.viewportDimension);
-    }
-    saveScrollOffset() {
-      let t0;
-      t0 = page_storage.PageStorage.of(this.context.storageContext);
-      t0 == null ? null : t0.writeState(this.context.storageContext, this.getPageFromPixels(this.pixels, this.viewportDimension));
-    }
-    restoreScrollOffset() {
-      let t0;
-      if (!this.hasPixels) {
-        let value = T.doubleN().as((t0 = page_storage.PageStorage.of(this.context.storageContext), t0 == null ? null : t0.readState(this.context.storageContext)));
-        if (value != null) this[_pageToUseOnStartup] = value;
-      }
-    }
-    saveOffset() {
-      this.context.saveOffset(this.getPageFromPixels(this.pixels, this.viewportDimension));
-    }
-    restoreOffset(offset, opts) {
-      let initialRestore = opts && 'initialRestore' in opts ? opts.initialRestore : false;
-      if (!(initialRestore !== null)) dart.assertFailed(null, I[0], 415, 12, "initialRestore != null");
-      if (!(offset !== null)) dart.assertFailed(null, I[0], 416, 12, "offset != null");
-      if (initialRestore) {
-        this[_pageToUseOnStartup] = offset;
-      } else {
-        this.jumpTo(this.getPixelsFromPage(offset));
-      }
-    }
-    applyViewportDimension(viewportDimension) {
-      let oldViewportDimensions = this.hasViewportDimension ? this.viewportDimension : null;
-      if (viewportDimension === oldViewportDimensions) {
-        return true;
-      }
-      let result = super.applyViewportDimension(viewportDimension);
-      let oldPixels = this.hasPixels ? this.pixels : null;
-      let page = oldPixels == null || oldViewportDimensions === 0.0 ? this[_pageToUseOnStartup] : this.getPageFromPixels(oldPixels, dart.nullCheck(oldViewportDimensions));
-      let newPixels = this.getPixelsFromPage(page);
-      if (newPixels !== oldPixels) {
-        this.correctPixels(newPixels);
-        return false;
-      }
-      return result;
-    }
-    applyContentDimensions(minScrollExtent, maxScrollExtent) {
-      let newMinScrollExtent = minScrollExtent + this[_initialPageOffset];
-      return super.applyContentDimensions(newMinScrollExtent, math.max(core.double, newMinScrollExtent, maxScrollExtent - this[_initialPageOffset]));
-    }
-    copyWith(opts) {
-      let t0, t0$, t0$0, t0$1, t0$2, t0$3;
-      let minScrollExtent = opts && 'minScrollExtent' in opts ? opts.minScrollExtent : null;
-      let maxScrollExtent = opts && 'maxScrollExtent' in opts ? opts.maxScrollExtent : null;
-      let pixels = opts && 'pixels' in opts ? opts.pixels : null;
-      let viewportDimension = opts && 'viewportDimension' in opts ? opts.viewportDimension : null;
-      let axisDirection = opts && 'axisDirection' in opts ? opts.axisDirection : null;
-      let viewportFraction = opts && 'viewportFraction' in opts ? opts.viewportFraction : null;
-      return new page_view.PageMetrics.new({minScrollExtent: (t0 = minScrollExtent, t0 == null ? this.hasContentDimensions ? this.minScrollExtent : null : t0), maxScrollExtent: (t0$ = maxScrollExtent, t0$ == null ? this.hasContentDimensions ? this.maxScrollExtent : null : t0$), pixels: (t0$0 = pixels, t0$0 == null ? this.hasPixels ? this.pixels : null : t0$0), viewportDimension: (t0$1 = viewportDimension, t0$1 == null ? this.hasViewportDimension ? this.viewportDimension : null : t0$1), axisDirection: (t0$2 = axisDirection, t0$2 == null ? this.axisDirection : t0$2), viewportFraction: (t0$3 = viewportFraction, t0$3 == null ? this.viewportFraction : t0$3)});
-    }
-    get [_maxScrollExtent$]() {
-      return T.doubleN().as(this[$noSuchMethod](new core._Invocation.getter(C[3] || CT.C3)));
-    }
-    get [_minScrollExtent$]() {
-      return T.doubleN().as(this[$noSuchMethod](new core._Invocation.getter(C[4] || CT.C4)));
-    }
-    get [_viewportDimension$]() {
-      return T.doubleN().as(this[$noSuchMethod](new core._Invocation.getter(C[5] || CT.C5)));
-    }
-    get [_pixels$]() {
-      return T.doubleN().as(this[$noSuchMethod](new core._Invocation.getter(C[6] || CT.C6)));
-    }
-  };
-  (page_view._PagePosition.new = function(opts) {
-    let physics = opts && 'physics' in opts ? opts.physics : null;
-    let context = opts && 'context' in opts ? opts.context : null;
-    let initialPage = opts && 'initialPage' in opts ? opts.initialPage : 0;
-    let keepPage = opts && 'keepPage' in opts ? opts.keepPage : true;
-    let viewportFraction = opts && 'viewportFraction' in opts ? opts.viewportFraction : 1;
-    let oldPosition = opts && 'oldPosition' in opts ? opts.oldPosition : null;
-    this.initialPage = initialPage;
-    if (!(initialPage !== null)) dart.assertFailed(null, I[0], 312, 15, "initialPage != null");
-    if (!(keepPage !== null)) dart.assertFailed(null, I[0], 313, 15, "keepPage != null");
-    if (!(viewportFraction !== null)) dart.assertFailed(null, I[0], 314, 15, "viewportFraction != null");
-    if (!(viewportFraction > 0.0)) dart.assertFailed(null, I[0], 315, 15, "viewportFraction > 0.0");
-    this[_viewportFraction] = viewportFraction;
-    this[_pageToUseOnStartup] = initialPage[$toDouble]();
-    page_view._PagePosition.__proto__.new.call(this, {physics: physics, context: context, initialPixels: null, keepScrollOffset: keepPage, oldPosition: oldPosition});
+  dart.defineExtensionMethods(wrap.WrapCrossAlignment, ['toString']);
+  wrap.WrapCrossAlignment.start = C[7] || CT.C7;
+  wrap.WrapCrossAlignment.end = C[8] || CT.C8;
+  wrap.WrapCrossAlignment.center = C[9] || CT.C9;
+  wrap.WrapCrossAlignment.values = C[10] || CT.C10;
+  wrap._RunMetrics = class _RunMetrics extends core.Object {};
+  (wrap._RunMetrics.new = function(mainAxisExtent, crossAxisExtent, childCount) {
+    this.mainAxisExtent = mainAxisExtent;
+    this.crossAxisExtent = crossAxisExtent;
+    this.childCount = childCount;
     ;
-  }).prototype = page_view._PagePosition.prototype;
-  dart.addTypeTests(page_view._PagePosition);
-  dart.addTypeCaches(page_view._PagePosition);
-  page_view._PagePosition[dart.implements] = () => [page_view.PageMetrics];
-  dart.setMethodSignature(page_view._PagePosition, () => ({
-    __proto__: dart.getMethods(page_view._PagePosition.__proto__),
-    getPageFromPixels: dart.fnType(core.double, [core.double, core.double]),
-    getPixelsFromPage: dart.fnType(core.double, [core.double]),
-    copyWith: dart.fnType(page_view.PageMetrics, [], {axisDirection: dart.nullable(basic_types.AxisDirection), maxScrollExtent: dart.nullable(core.double), minScrollExtent: dart.nullable(core.double), pixels: dart.nullable(core.double), viewportDimension: dart.nullable(core.double), viewportFraction: dart.nullable(core.double)}, {})
+  }).prototype = wrap._RunMetrics.prototype;
+  dart.addTypeTests(wrap._RunMetrics);
+  dart.addTypeCaches(wrap._RunMetrics);
+  dart.setLibraryUri(wrap._RunMetrics, I[0]);
+  dart.setFieldSignature(wrap._RunMetrics, () => ({
+    __proto__: dart.getFields(wrap._RunMetrics.__proto__),
+    mainAxisExtent: dart.finalFieldType(core.double),
+    crossAxisExtent: dart.finalFieldType(core.double),
+    childCount: dart.finalFieldType(core.int)
   }));
-  dart.setGetterSignature(page_view._PagePosition, () => ({
-    __proto__: dart.getGetters(page_view._PagePosition.__proto__),
-    viewportFraction: core.double,
-    [_initialPageOffset]: core.double,
-    page: dart.nullable(core.double),
-    [_maxScrollExtent$]: dart.nullable(core.double),
-    [_minScrollExtent$]: dart.nullable(core.double),
-    [_viewportDimension$]: dart.nullable(core.double),
-    [_pixels$]: dart.nullable(core.double)
-  }));
-  dart.setSetterSignature(page_view._PagePosition, () => ({
-    __proto__: dart.getSetters(page_view._PagePosition.__proto__),
-    viewportFraction: core.double
-  }));
-  dart.setLibraryUri(page_view._PagePosition, I[1]);
-  dart.setFieldSignature(page_view._PagePosition, () => ({
-    __proto__: dart.getFields(page_view._PagePosition.__proto__),
-    initialPage: dart.finalFieldType(core.int),
-    [_pageToUseOnStartup]: dart.fieldType(core.double),
-    [_viewportFraction]: dart.fieldType(core.double)
-  }));
-  var allowImplicitScrolling$ = dart.privateName(page_view, "_ForceImplicitScrollPhysics.allowImplicitScrolling");
-  page_view._ForceImplicitScrollPhysics = class _ForceImplicitScrollPhysics extends scroll_physics.ScrollPhysics {
-    get allowImplicitScrolling() {
-      return this[allowImplicitScrolling$];
-    }
-    set allowImplicitScrolling(value) {
-      super.allowImplicitScrolling = value;
-    }
-    applyTo(ancestor) {
-      return new page_view._ForceImplicitScrollPhysics.new({allowImplicitScrolling: this.allowImplicitScrolling, parent: this.buildParent(ancestor)});
-    }
-  };
-  (page_view._ForceImplicitScrollPhysics.new = function(opts) {
-    let allowImplicitScrolling = opts && 'allowImplicitScrolling' in opts ? opts.allowImplicitScrolling : null;
-    let parent = opts && 'parent' in opts ? opts.parent : null;
-    this[allowImplicitScrolling$] = allowImplicitScrolling;
-    if (!(allowImplicitScrolling !== null)) dart.assertFailed(null, I[0], 475, 15, "allowImplicitScrolling != null");
-    page_view._ForceImplicitScrollPhysics.__proto__.new.call(this, {parent: parent});
+  var _runIndex = dart.privateName(wrap, "_runIndex");
+  wrap.WrapParentData = class WrapParentData extends box.ContainerBoxParentData$(box.RenderBox) {};
+  (wrap.WrapParentData.new = function() {
+    this[_runIndex] = 0;
+    wrap.WrapParentData.__proto__.new.call(this);
     ;
-  }).prototype = page_view._ForceImplicitScrollPhysics.prototype;
-  dart.addTypeTests(page_view._ForceImplicitScrollPhysics);
-  dart.addTypeCaches(page_view._ForceImplicitScrollPhysics);
-  dart.setMethodSignature(page_view._ForceImplicitScrollPhysics, () => ({
-    __proto__: dart.getMethods(page_view._ForceImplicitScrollPhysics.__proto__),
-    applyTo: dart.fnType(page_view._ForceImplicitScrollPhysics, [dart.nullable(scroll_physics.ScrollPhysics)])
+  }).prototype = wrap.WrapParentData.prototype;
+  dart.addTypeTests(wrap.WrapParentData);
+  dart.addTypeCaches(wrap.WrapParentData);
+  dart.setLibraryUri(wrap.WrapParentData, I[0]);
+  dart.setFieldSignature(wrap.WrapParentData, () => ({
+    __proto__: dart.getFields(wrap.WrapParentData.__proto__),
+    [_runIndex]: dart.fieldType(core.int)
   }));
-  dart.setLibraryUri(page_view._ForceImplicitScrollPhysics, I[1]);
-  dart.setFieldSignature(page_view._ForceImplicitScrollPhysics, () => ({
-    __proto__: dart.getFields(page_view._ForceImplicitScrollPhysics.__proto__),
-    allowImplicitScrolling: dart.finalFieldType(core.bool)
-  }));
-  var _getPage = dart.privateName(page_view, "_getPage");
-  var _getPixels = dart.privateName(page_view, "_getPixels");
-  var _getTargetPixels = dart.privateName(page_view, "_getTargetPixels");
-  page_view.PageScrollPhysics = class PageScrollPhysics extends scroll_physics.ScrollPhysics {
-    applyTo(ancestor) {
-      return new page_view.PageScrollPhysics.new({parent: this.buildParent(ancestor)});
+  var _name = dart.privateName(basic_types, "_name");
+  var _name$0 = dart.privateName(ui, "_name");
+  var _clipBehavior = dart.privateName(wrap, "_clipBehavior");
+  var _hasVisualOverflow = dart.privateName(wrap, "_hasVisualOverflow");
+  var _clipRectLayer = dart.privateName(wrap, "_clipRectLayer");
+  var _direction = dart.privateName(wrap, "_direction");
+  var _alignment = dart.privateName(wrap, "_alignment");
+  var _spacing = dart.privateName(wrap, "_spacing");
+  var _runAlignment = dart.privateName(wrap, "_runAlignment");
+  var _runSpacing = dart.privateName(wrap, "_runSpacing");
+  var _crossAxisAlignment = dart.privateName(wrap, "_crossAxisAlignment");
+  var _textDirection = dart.privateName(wrap, "_textDirection");
+  var _verticalDirection = dart.privateName(wrap, "_verticalDirection");
+  var _debugHasNecessaryDirections = dart.privateName(wrap, "_debugHasNecessaryDirections");
+  var _getMainAxisExtent = dart.privateName(wrap, "_getMainAxisExtent");
+  var _getCrossAxisExtent = dart.privateName(wrap, "_getCrossAxisExtent");
+  var _getOffset = dart.privateName(wrap, "_getOffset");
+  var _getChildCrossAxisOffset = dart.privateName(wrap, "_getChildCrossAxisOffset");
+  var _computeDryLayout = dart.privateName(wrap, "_computeDryLayout");
+  const RenderBox_ContainerRenderObjectMixin$36 = class RenderBox_ContainerRenderObjectMixin extends box.RenderBox {};
+  (RenderBox_ContainerRenderObjectMixin$36.new = function() {
+    object.ContainerRenderObjectMixin$(box.RenderBox, wrap.WrapParentData)[dart.mixinNew].call(this);
+    RenderBox_ContainerRenderObjectMixin$36.__proto__.new.call(this);
+  }).prototype = RenderBox_ContainerRenderObjectMixin$36.prototype;
+  dart.applyMixin(RenderBox_ContainerRenderObjectMixin$36, object.ContainerRenderObjectMixin$(box.RenderBox, wrap.WrapParentData));
+  const RenderBox_RenderBoxContainerDefaultsMixin$36 = class RenderBox_RenderBoxContainerDefaultsMixin extends RenderBox_ContainerRenderObjectMixin$36 {};
+  (RenderBox_RenderBoxContainerDefaultsMixin$36.new = function() {
+    RenderBox_RenderBoxContainerDefaultsMixin$36.__proto__.new.call(this);
+  }).prototype = RenderBox_RenderBoxContainerDefaultsMixin$36.prototype;
+  dart.applyMixin(RenderBox_RenderBoxContainerDefaultsMixin$36, box.RenderBoxContainerDefaultsMixin$(box.RenderBox, wrap.WrapParentData));
+  wrap.RenderWrap = class RenderWrap extends RenderBox_RenderBoxContainerDefaultsMixin$36 {
+    get direction() {
+      return this[_direction];
     }
-    [_getPage](position) {
-      if (page_view._PagePosition.is(position)) return dart.nullCheck(position.page);
-      return position.pixels / position.viewportDimension;
+    set direction(value) {
+      if (!(value !== null)) dart.assertFailed(null, I[1], 152, 12, "value != null");
+      if (this[_direction] === value) return;
+      this[_direction] = value;
+      this.markNeedsLayout();
     }
-    [_getPixels](position, page) {
-      if (page_view._PagePosition.is(position)) return position.getPixelsFromPage(page);
-      return page * position.viewportDimension;
+    get alignment() {
+      return this[_alignment];
     }
-    [_getTargetPixels](position, tolerance, velocity) {
-      let page = this[_getPage](position);
-      if (velocity < -tolerance.velocity)
-        page = page - 0.5;
-      else if (velocity > tolerance.velocity) page = page + 0.5;
-      return this[_getPixels](position, page[$roundToDouble]());
+    set alignment(value) {
+      if (!(value !== null)) dart.assertFailed(null, I[1], 175, 12, "value != null");
+      if (this[_alignment] === value) return;
+      this[_alignment] = value;
+      this.markNeedsLayout();
     }
-    createBallisticSimulation(position, velocity) {
-      if (velocity <= 0.0 && position.pixels <= position.minScrollExtent || velocity >= 0.0 && position.pixels >= position.maxScrollExtent) return super.createBallisticSimulation(position, velocity);
-      let tolerance = this.tolerance;
-      let target = this[_getTargetPixels](position, tolerance, velocity);
-      if (target !== position.pixels) return new spring_simulation.ScrollSpringSimulation.new(this.spring, position.pixels, target, velocity, {tolerance: tolerance});
-      return null;
+    get spacing() {
+      return this[_spacing];
     }
-    get allowImplicitScrolling() {
-      return false;
+    set spacing(value) {
+      if (!(value !== null)) dart.assertFailed(null, I[1], 196, 12, "value != null");
+      if (this[_spacing] === value) return;
+      this[_spacing] = value;
+      this.markNeedsLayout();
     }
-  };
-  (page_view.PageScrollPhysics.new = function(opts) {
-    let parent = opts && 'parent' in opts ? opts.parent : null;
-    page_view.PageScrollPhysics.__proto__.new.call(this, {parent: parent});
-    ;
-  }).prototype = page_view.PageScrollPhysics.prototype;
-  dart.addTypeTests(page_view.PageScrollPhysics);
-  dart.addTypeCaches(page_view.PageScrollPhysics);
-  dart.setMethodSignature(page_view.PageScrollPhysics, () => ({
-    __proto__: dart.getMethods(page_view.PageScrollPhysics.__proto__),
-    applyTo: dart.fnType(page_view.PageScrollPhysics, [dart.nullable(scroll_physics.ScrollPhysics)]),
-    [_getPage]: dart.fnType(core.double, [scroll_metrics.ScrollMetrics]),
-    [_getPixels]: dart.fnType(core.double, [scroll_metrics.ScrollMetrics, core.double]),
-    [_getTargetPixels]: dart.fnType(core.double, [scroll_metrics.ScrollMetrics, tolerance.Tolerance, core.double])
-  }));
-  dart.setLibraryUri(page_view.PageScrollPhysics, I[1]);
-  var allowImplicitScrolling$0 = dart.privateName(page_view, "PageView.allowImplicitScrolling");
-  var restorationId$ = dart.privateName(page_view, "PageView.restorationId");
-  var scrollDirection$ = dart.privateName(page_view, "PageView.scrollDirection");
-  var reverse$ = dart.privateName(page_view, "PageView.reverse");
-  var controller$ = dart.privateName(page_view, "PageView.controller");
-  var physics$ = dart.privateName(page_view, "PageView.physics");
-  var pageSnapping$ = dart.privateName(page_view, "PageView.pageSnapping");
-  var onPageChanged$ = dart.privateName(page_view, "PageView.onPageChanged");
-  var childrenDelegate$ = dart.privateName(page_view, "PageView.childrenDelegate");
-  var dragStartBehavior$ = dart.privateName(page_view, "PageView.dragStartBehavior");
-  var clipBehavior$ = dart.privateName(page_view, "PageView.clipBehavior");
-  var scrollBehavior$ = dart.privateName(page_view, "PageView.scrollBehavior");
-  var _name$ = dart.privateName(basic_types, "_name");
-  var _name$0 = dart.privateName(recognizer, "_name");
-  var _name$1 = dart.privateName(ui, "_name");
-  page_view.PageView = class PageView extends framework.StatefulWidget {
-    get allowImplicitScrolling() {
-      return this[allowImplicitScrolling$0];
+    get runAlignment() {
+      return this[_runAlignment];
     }
-    set allowImplicitScrolling(value) {
-      super.allowImplicitScrolling = value;
+    set runAlignment(value) {
+      if (!(value !== null)) dart.assertFailed(null, I[1], 220, 12, "value != null");
+      if (this[_runAlignment] === value) return;
+      this[_runAlignment] = value;
+      this.markNeedsLayout();
     }
-    get restorationId() {
-      return this[restorationId$];
+    get runSpacing() {
+      return this[_runSpacing];
     }
-    set restorationId(value) {
-      super.restorationId = value;
+    set runSpacing(value) {
+      if (!(value !== null)) dart.assertFailed(null, I[1], 240, 12, "value != null");
+      if (this[_runSpacing] === value) return;
+      this[_runSpacing] = value;
+      this.markNeedsLayout();
     }
-    get scrollDirection() {
-      return this[scrollDirection$];
+    get crossAxisAlignment() {
+      return this[_crossAxisAlignment];
     }
-    set scrollDirection(value) {
-      super.scrollDirection = value;
+    set crossAxisAlignment(value) {
+      if (!(value !== null)) dart.assertFailed(null, I[1], 265, 12, "value != null");
+      if (this[_crossAxisAlignment] === value) return;
+      this[_crossAxisAlignment] = value;
+      this.markNeedsLayout();
     }
-    get reverse() {
-      return this[reverse$];
+    get textDirection() {
+      return this[_textDirection];
     }
-    set reverse(value) {
-      super.reverse = value;
+    set textDirection(value) {
+      if (this[_textDirection] != value) {
+        this[_textDirection] = value;
+        this.markNeedsLayout();
+      }
     }
-    get controller() {
-      return this[controller$];
+    get verticalDirection() {
+      return this[_verticalDirection];
     }
-    set controller(value) {
-      super.controller = value;
-    }
-    get physics() {
-      return this[physics$];
-    }
-    set physics(value) {
-      super.physics = value;
-    }
-    get pageSnapping() {
-      return this[pageSnapping$];
-    }
-    set pageSnapping(value) {
-      super.pageSnapping = value;
-    }
-    get onPageChanged() {
-      return this[onPageChanged$];
-    }
-    set onPageChanged(value) {
-      super.onPageChanged = value;
-    }
-    get childrenDelegate() {
-      return this[childrenDelegate$];
-    }
-    set childrenDelegate(value) {
-      super.childrenDelegate = value;
-    }
-    get dragStartBehavior() {
-      return this[dragStartBehavior$];
-    }
-    set dragStartBehavior(value) {
-      super.dragStartBehavior = value;
+    set verticalDirection(value) {
+      if (this[_verticalDirection] !== value) {
+        this[_verticalDirection] = value;
+        this.markNeedsLayout();
+      }
     }
     get clipBehavior() {
-      return this[clipBehavior$];
+      return this[_clipBehavior];
     }
     set clipBehavior(value) {
-      super.clipBehavior = value;
+      if (!(value !== null)) dart.assertFailed(null, I[1], 341, 12, "value != null");
+      if (value !== this[_clipBehavior]) {
+        this[_clipBehavior] = value;
+        this.markNeedsPaint();
+        this.markNeedsSemanticsUpdate();
+      }
     }
-    get scrollBehavior() {
-      return this[scrollBehavior$];
-    }
-    set scrollBehavior(value) {
-      super.scrollBehavior = value;
-    }
-    createState() {
-      return new page_view._PageViewState.new();
-    }
-  };
-  (page_view.PageView.new = function(opts) {
-    let t0;
-    let key = opts && 'key' in opts ? opts.key : null;
-    let scrollDirection = opts && 'scrollDirection' in opts ? opts.scrollDirection : C[7] || CT.C7;
-    let reverse = opts && 'reverse' in opts ? opts.reverse : false;
-    let controller = opts && 'controller' in opts ? opts.controller : null;
-    let physics = opts && 'physics' in opts ? opts.physics : null;
-    let pageSnapping = opts && 'pageSnapping' in opts ? opts.pageSnapping : true;
-    let onPageChanged = opts && 'onPageChanged' in opts ? opts.onPageChanged : null;
-    let children = opts && 'children' in opts ? opts.children : C[8] || CT.C8;
-    let dragStartBehavior = opts && 'dragStartBehavior' in opts ? opts.dragStartBehavior : C[9] || CT.C9;
-    let allowImplicitScrolling = opts && 'allowImplicitScrolling' in opts ? opts.allowImplicitScrolling : false;
-    let restorationId = opts && 'restorationId' in opts ? opts.restorationId : null;
-    let clipBehavior = opts && 'clipBehavior' in opts ? opts.clipBehavior : C[10] || CT.C10;
-    let scrollBehavior = opts && 'scrollBehavior' in opts ? opts.scrollBehavior : null;
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[scrollDirection$] = scrollDirection;
-    this[reverse$] = reverse;
-    this[physics$] = physics;
-    this[pageSnapping$] = pageSnapping;
-    this[onPageChanged$] = onPageChanged;
-    this[dragStartBehavior$] = dragStartBehavior;
-    this[allowImplicitScrolling$0] = allowImplicitScrolling;
-    this[restorationId$] = restorationId;
-    this[clipBehavior$] = clipBehavior;
-    this[scrollBehavior$] = scrollBehavior;
-    if (!(allowImplicitScrolling !== null)) dart.assertFailed(null, I[0], 640, 15, "allowImplicitScrolling != null");
-    if (!(clipBehavior !== null)) dart.assertFailed(null, I[0], 641, 15, "clipBehavior != null");
-    this[controller$] = (t0 = controller, t0 == null ? page_view._defaultPageController : t0);
-    this[childrenDelegate$] = new sliver.SliverChildListDelegate.new(children);
-    page_view.PageView.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = page_view.PageView.prototype;
-  (page_view.PageView.builder = function(opts) {
-    let t0;
-    let key = opts && 'key' in opts ? opts.key : null;
-    let scrollDirection = opts && 'scrollDirection' in opts ? opts.scrollDirection : C[7] || CT.C7;
-    let reverse = opts && 'reverse' in opts ? opts.reverse : false;
-    let controller = opts && 'controller' in opts ? opts.controller : null;
-    let physics = opts && 'physics' in opts ? opts.physics : null;
-    let pageSnapping = opts && 'pageSnapping' in opts ? opts.pageSnapping : true;
-    let onPageChanged = opts && 'onPageChanged' in opts ? opts.onPageChanged : null;
-    let itemBuilder = opts && 'itemBuilder' in opts ? opts.itemBuilder : null;
-    let itemCount = opts && 'itemCount' in opts ? opts.itemCount : null;
-    let dragStartBehavior = opts && 'dragStartBehavior' in opts ? opts.dragStartBehavior : C[9] || CT.C9;
-    let allowImplicitScrolling = opts && 'allowImplicitScrolling' in opts ? opts.allowImplicitScrolling : false;
-    let restorationId = opts && 'restorationId' in opts ? opts.restorationId : null;
-    let clipBehavior = opts && 'clipBehavior' in opts ? opts.clipBehavior : C[10] || CT.C10;
-    let scrollBehavior = opts && 'scrollBehavior' in opts ? opts.scrollBehavior : null;
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[scrollDirection$] = scrollDirection;
-    this[reverse$] = reverse;
-    this[physics$] = physics;
-    this[pageSnapping$] = pageSnapping;
-    this[onPageChanged$] = onPageChanged;
-    this[dragStartBehavior$] = dragStartBehavior;
-    this[allowImplicitScrolling$0] = allowImplicitScrolling;
-    this[restorationId$] = restorationId;
-    this[clipBehavior$] = clipBehavior;
-    this[scrollBehavior$] = scrollBehavior;
-    if (!(allowImplicitScrolling !== null)) dart.assertFailed(null, I[0], 679, 15, "allowImplicitScrolling != null");
-    if (!(clipBehavior !== null)) dart.assertFailed(null, I[0], 680, 15, "clipBehavior != null");
-    this[controller$] = (t0 = controller, t0 == null ? page_view._defaultPageController : t0);
-    this[childrenDelegate$] = new sliver.SliverChildBuilderDelegate.new(itemBuilder, {childCount: itemCount});
-    page_view.PageView.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = page_view.PageView.prototype;
-  (page_view.PageView.custom = function(opts) {
-    let t0;
-    let key = opts && 'key' in opts ? opts.key : null;
-    let scrollDirection = opts && 'scrollDirection' in opts ? opts.scrollDirection : C[7] || CT.C7;
-    let reverse = opts && 'reverse' in opts ? opts.reverse : false;
-    let controller = opts && 'controller' in opts ? opts.controller : null;
-    let physics = opts && 'physics' in opts ? opts.physics : null;
-    let pageSnapping = opts && 'pageSnapping' in opts ? opts.pageSnapping : true;
-    let onPageChanged = opts && 'onPageChanged' in opts ? opts.onPageChanged : null;
-    let childrenDelegate = opts && 'childrenDelegate' in opts ? opts.childrenDelegate : null;
-    let dragStartBehavior = opts && 'dragStartBehavior' in opts ? opts.dragStartBehavior : C[9] || CT.C9;
-    let allowImplicitScrolling = opts && 'allowImplicitScrolling' in opts ? opts.allowImplicitScrolling : false;
-    let restorationId = opts && 'restorationId' in opts ? opts.restorationId : null;
-    let clipBehavior = opts && 'clipBehavior' in opts ? opts.clipBehavior : C[10] || CT.C10;
-    let scrollBehavior = opts && 'scrollBehavior' in opts ? opts.scrollBehavior : null;
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[scrollDirection$] = scrollDirection;
-    this[reverse$] = reverse;
-    this[physics$] = physics;
-    this[pageSnapping$] = pageSnapping;
-    this[onPageChanged$] = onPageChanged;
-    this[childrenDelegate$] = childrenDelegate;
-    this[dragStartBehavior$] = dragStartBehavior;
-    this[allowImplicitScrolling$0] = allowImplicitScrolling;
-    this[restorationId$] = restorationId;
-    this[clipBehavior$] = clipBehavior;
-    this[scrollBehavior$] = scrollBehavior;
-    if (!(childrenDelegate !== null)) dart.assertFailed(null, I[0], 783, 15, "childrenDelegate != null");
-    if (!(allowImplicitScrolling !== null)) dart.assertFailed(null, I[0], 784, 15, "allowImplicitScrolling != null");
-    if (!(clipBehavior !== null)) dart.assertFailed(null, I[0], 785, 15, "clipBehavior != null");
-    this[controller$] = (t0 = controller, t0 == null ? page_view._defaultPageController : t0);
-    page_view.PageView.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = page_view.PageView.prototype;
-  dart.addTypeTests(page_view.PageView);
-  dart.addTypeCaches(page_view.PageView);
-  dart.setMethodSignature(page_view.PageView, () => ({
-    __proto__: dart.getMethods(page_view.PageView.__proto__),
-    createState: dart.fnType(page_view._PageViewState, [])
-  }));
-  dart.setLibraryUri(page_view.PageView, I[1]);
-  dart.setFieldSignature(page_view.PageView, () => ({
-    __proto__: dart.getFields(page_view.PageView.__proto__),
-    allowImplicitScrolling: dart.finalFieldType(core.bool),
-    restorationId: dart.finalFieldType(dart.nullable(core.String)),
-    scrollDirection: dart.finalFieldType(basic_types.Axis),
-    reverse: dart.finalFieldType(core.bool),
-    controller: dart.finalFieldType(page_view.PageController),
-    physics: dart.finalFieldType(dart.nullable(scroll_physics.ScrollPhysics)),
-    pageSnapping: dart.finalFieldType(core.bool),
-    onPageChanged: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [core.int]))),
-    childrenDelegate: dart.finalFieldType(sliver.SliverChildDelegate),
-    dragStartBehavior: dart.finalFieldType(recognizer.DragStartBehavior),
-    clipBehavior: dart.finalFieldType(ui.Clip),
-    scrollBehavior: dart.finalFieldType(dart.nullable(scroll_configuration.ScrollBehavior))
-  }));
-  var _lastReportedPage = dart.privateName(page_view, "_lastReportedPage");
-  var _getDirection = dart.privateName(page_view, "_getDirection");
-  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
-  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
-  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
-  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
-  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
-  page_view._PageViewState = class _PageViewState extends framework.State$(page_view.PageView) {
-    initState() {
-      super.initState();
-      this[_lastReportedPage] = this.widget.controller.initialPage;
-    }
-    [_getDirection](context) {
-      switch (this.widget.scrollDirection) {
-        case C[7] || CT.C7:
-        {
-          if (!debug.debugCheckHasDirectionality(context)) dart.assertFailed(null, I[0], 892, 16, "debugCheckHasDirectionality(context)");
-          let textDirection = basic.Directionality.of(context);
-          let axisDirection = basic_types.textDirectionToAxisDirection(textDirection);
-          return this.widget.reverse ? basic_types.flipAxisDirection(axisDirection) : axisDirection;
+    get [_debugHasNecessaryDirections]() {
+      if (!(this.direction !== null)) dart.assertFailed(null, I[1], 350, 12, "direction != null");
+      if (!(this.alignment !== null)) dart.assertFailed(null, I[1], 351, 12, "alignment != null");
+      if (!(this.runAlignment !== null)) dart.assertFailed(null, I[1], 352, 12, "runAlignment != null");
+      if (!(this.crossAxisAlignment !== null)) dart.assertFailed(null, I[1], 353, 12, "crossAxisAlignment != null");
+      if (this.firstChild != null && !dart.equals(this.lastChild, this.firstChild)) {
+        switch (this.direction) {
+          case C[11] || CT.C11:
+          {
+            if (!(this.textDirection != null)) dart.assertFailed("Horizontal " + dart.str(this[$runtimeType]) + " with multiple children has a null textDirection, so the layout order is undefined.", I[1], 358, 18, "textDirection != null");
+            break;
+          }
+          case C[14] || CT.C14:
+          {
+            if (!(this.verticalDirection !== null)) dart.assertFailed("Vertical " + dart.str(this[$runtimeType]) + " with multiple children has a null verticalDirection, so the layout order is undefined.", I[1], 361, 18, "verticalDirection != null");
+            break;
+          }
         }
+      }
+      if (this.alignment === wrap.WrapAlignment.start || this.alignment === wrap.WrapAlignment.end) {
+        switch (this.direction) {
+          case C[11] || CT.C11:
+          {
+            if (!(this.textDirection != null)) dart.assertFailed("Horizontal " + dart.str(this[$runtimeType]) + " with alignment " + dart.str(this.alignment) + " has a null textDirection, so the alignment cannot be resolved.", I[1], 368, 18, "textDirection != null");
+            break;
+          }
+          case C[14] || CT.C14:
+          {
+            if (!(this.verticalDirection !== null)) dart.assertFailed("Vertical " + dart.str(this[$runtimeType]) + " with alignment " + dart.str(this.alignment) + " has a null verticalDirection, so the alignment cannot be resolved.", I[1], 371, 18, "verticalDirection != null");
+            break;
+          }
+        }
+      }
+      if (this.runAlignment === wrap.WrapAlignment.start || this.runAlignment === wrap.WrapAlignment.end) {
+        switch (this.direction) {
+          case C[11] || CT.C11:
+          {
+            if (!(this.verticalDirection !== null)) dart.assertFailed("Horizontal " + dart.str(this[$runtimeType]) + " with runAlignment " + dart.str(this.runAlignment) + " has a null verticalDirection, so the alignment cannot be resolved.", I[1], 378, 18, "verticalDirection != null");
+            break;
+          }
+          case C[14] || CT.C14:
+          {
+            if (!(this.textDirection != null)) dart.assertFailed("Vertical " + dart.str(this[$runtimeType]) + " with runAlignment " + dart.str(this.runAlignment) + " has a null textDirection, so the alignment cannot be resolved.", I[1], 381, 18, "textDirection != null");
+            break;
+          }
+        }
+      }
+      if (this.crossAxisAlignment === wrap.WrapCrossAlignment.start || this.crossAxisAlignment === wrap.WrapCrossAlignment.end) {
+        switch (this.direction) {
+          case C[11] || CT.C11:
+          {
+            if (!(this.verticalDirection !== null)) dart.assertFailed("Horizontal " + dart.str(this[$runtimeType]) + " with crossAxisAlignment " + dart.str(this.crossAxisAlignment) + " has a null verticalDirection, so the alignment cannot be resolved.", I[1], 388, 18, "verticalDirection != null");
+            break;
+          }
+          case C[14] || CT.C14:
+          {
+            if (!(this.textDirection != null)) dart.assertFailed("Vertical " + dart.str(this[$runtimeType]) + " with crossAxisAlignment " + dart.str(this.crossAxisAlignment) + " has a null textDirection, so the alignment cannot be resolved.", I[1], 391, 18, "textDirection != null");
+            break;
+          }
+        }
+      }
+      return true;
+    }
+    setupParentData(child) {
+      box.RenderBox.as(child);
+      if (!wrap.WrapParentData.is(child.parentData)) child.parentData = new wrap.WrapParentData.new();
+    }
+    computeMinIntrinsicWidth(height) {
+      switch (this.direction) {
         case C[11] || CT.C11:
         {
-          return this.widget.reverse ? basic_types.AxisDirection.up : basic_types.AxisDirection.down;
+          let width = 0.0;
+          let child = this.firstChild;
+          while (child != null) {
+            width = math.max(core.double, width, child.getMinIntrinsicWidth(1 / 0));
+            child = this.childAfter(child);
+          }
+          return width;
+        }
+        case C[14] || CT.C14:
+        {
+          return this.computeDryLayout(new box.BoxConstraints.new({maxHeight: height})).width;
         }
       }
     }
-    build(context) {
-      let t1, t0, t1$, t0$, t0$0;
-      let axisDirection = this[_getDirection](context);
-      let physics = new page_view._ForceImplicitScrollPhysics.new({allowImplicitScrolling: this.widget.allowImplicitScrolling}).applyTo(this.widget.pageSnapping ? page_view._kPagePhysics.applyTo((t0 = this.widget.physics, t0 == null ? (t1 = this.widget.scrollBehavior, t1 == null ? null : t1.getScrollPhysics(context)) : t0)) : (t0$ = this.widget.physics, t0$ == null ? (t1$ = this.widget.scrollBehavior, t1$ == null ? null : t1$.getScrollPhysics(context)) : t0$));
-      return new (T.NotificationListenerOfScrollNotification()).new({onNotification: dart.fn(notification => {
-          if (notification.depth === 0 && this.widget.onPageChanged != null && scroll_notification.ScrollUpdateNotification.is(notification)) {
-            let metrics = page_view.PageMetrics.as(notification.metrics);
-            let currentPage = dart.nullCheck(metrics.page)[$round]();
-            if (currentPage !== this[_lastReportedPage]) {
-              this[_lastReportedPage] = currentPage;
-              dart.nullCheck(this.widget.onPageChanged)(currentPage);
-            }
+    computeMaxIntrinsicWidth(height) {
+      switch (this.direction) {
+        case C[11] || CT.C11:
+        {
+          let width = 0.0;
+          let child = this.firstChild;
+          while (child != null) {
+            width = width + child.getMaxIntrinsicWidth(1 / 0);
+            child = this.childAfter(child);
           }
-          return false;
-        }, T.ScrollNotificationTobool()), child: new scrollable.Scrollable.new({dragStartBehavior: this.widget.dragStartBehavior, axisDirection: axisDirection, controller: this.widget.controller, physics: physics, restorationId: this.widget.restorationId, scrollBehavior: (t0$0 = this.widget.scrollBehavior, t0$0 == null ? scroll_configuration.ScrollConfiguration.of(context).copyWith({scrollbars: false}) : t0$0), viewportBuilder: dart.fn((context, position) => new viewport.Viewport.new({cacheExtent: this.widget.allowImplicitScrolling ? 1.0 : 0.0, cacheExtentStyle: viewport$.CacheExtentStyle.viewport, axisDirection: axisDirection, offset: position, clipBehavior: this.widget.clipBehavior, slivers: T.JSArrayOfWidget().of([new sliver_fill.SliverFillViewport.new({viewportFraction: this.widget.controller.viewportFraction, delegate: this.widget.childrenDelegate, $creationLocationd_0dea112b090073317d4: C[12] || CT.C12})]), $creationLocationd_0dea112b090073317d4: C[16] || CT.C16}), T.BuildContextAndViewportOffsetToViewport()), $creationLocationd_0dea112b090073317d4: C[24] || CT.C24}), $creationLocationd_0dea112b090073317d4: C[33] || CT.C33});
+          return width;
+        }
+        case C[14] || CT.C14:
+        {
+          return this.computeDryLayout(new box.BoxConstraints.new({maxHeight: height})).width;
+        }
+      }
     }
-    debugFillProperties(description) {
-      super.debugFillProperties(description);
-      description.add(new (T.EnumPropertyOfAxis()).new("scrollDirection", this.widget.scrollDirection));
-      description.add(new diagnostics.FlagProperty.new("reverse", {value: this.widget.reverse, ifTrue: "reversed"}));
-      description.add(new (T.DiagnosticsPropertyOfPageController()).new("controller", this.widget.controller, {showName: false}));
-      description.add(new (T.DiagnosticsPropertyOfScrollPhysics()).new("physics", this.widget.physics, {showName: false}));
-      description.add(new diagnostics.FlagProperty.new("pageSnapping", {value: this.widget.pageSnapping, ifFalse: "snapping disabled"}));
-      description.add(new diagnostics.FlagProperty.new("allowImplicitScrolling", {value: this.widget.allowImplicitScrolling, ifTrue: "allow implicit scrolling"}));
+    computeMinIntrinsicHeight(width) {
+      switch (this.direction) {
+        case C[11] || CT.C11:
+        {
+          return this.computeDryLayout(new box.BoxConstraints.new({maxWidth: width})).height;
+        }
+        case C[14] || CT.C14:
+        {
+          let height = 0.0;
+          let child = this.firstChild;
+          while (child != null) {
+            height = math.max(core.double, height, child.getMinIntrinsicHeight(1 / 0));
+            child = this.childAfter(child);
+          }
+          return height;
+        }
+      }
+    }
+    computeMaxIntrinsicHeight(width) {
+      switch (this.direction) {
+        case C[11] || CT.C11:
+        {
+          return this.computeDryLayout(new box.BoxConstraints.new({maxWidth: width})).height;
+        }
+        case C[14] || CT.C14:
+        {
+          let height = 0.0;
+          let child = this.firstChild;
+          while (child != null) {
+            height = height + child.getMaxIntrinsicHeight(1 / 0);
+            child = this.childAfter(child);
+          }
+          return height;
+        }
+      }
+    }
+    computeDistanceToActualBaseline(baseline) {
+      return this.defaultComputeDistanceToHighestActualBaseline(baseline);
+    }
+    [_getMainAxisExtent](childSize) {
+      switch (this.direction) {
+        case C[11] || CT.C11:
+        {
+          return childSize.width;
+        }
+        case C[14] || CT.C14:
+        {
+          return childSize.height;
+        }
+      }
+    }
+    [_getCrossAxisExtent](childSize) {
+      switch (this.direction) {
+        case C[11] || CT.C11:
+        {
+          return childSize.height;
+        }
+        case C[14] || CT.C14:
+        {
+          return childSize.width;
+        }
+      }
+    }
+    [_getOffset](mainAxisOffset, crossAxisOffset) {
+      switch (this.direction) {
+        case C[11] || CT.C11:
+        {
+          return new ui.Offset.new(mainAxisOffset, crossAxisOffset);
+        }
+        case C[14] || CT.C14:
+        {
+          return new ui.Offset.new(crossAxisOffset, mainAxisOffset);
+        }
+      }
+    }
+    [_getChildCrossAxisOffset](flipCrossAxis, runCrossAxisExtent, childCrossAxisExtent) {
+      let freeSpace = runCrossAxisExtent - childCrossAxisExtent;
+      switch (this.crossAxisAlignment) {
+        case C[7] || CT.C7:
+        {
+          return flipCrossAxis ? freeSpace : 0.0;
+        }
+        case C[8] || CT.C8:
+        {
+          return flipCrossAxis ? 0.0 : freeSpace;
+        }
+        case C[9] || CT.C9:
+        {
+          return freeSpace / 2.0;
+        }
+      }
+    }
+    computeDryLayout(constraints) {
+      return this[_computeDryLayout](constraints);
+    }
+    [_computeDryLayout](constraints, layoutChild = C[15] || CT.C15) {
+      let childConstraints = null;
+      let mainAxisLimit = 0.0;
+      switch (this.direction) {
+        case C[11] || CT.C11:
+        {
+          childConstraints = new box.BoxConstraints.new({maxWidth: constraints.maxWidth});
+          mainAxisLimit = constraints.maxWidth;
+          break;
+        }
+        case C[14] || CT.C14:
+        {
+          childConstraints = new box.BoxConstraints.new({maxHeight: constraints.maxHeight});
+          mainAxisLimit = constraints.maxHeight;
+          break;
+        }
+      }
+      let mainAxisExtent = 0.0;
+      let crossAxisExtent = 0.0;
+      let runMainAxisExtent = 0.0;
+      let runCrossAxisExtent = 0.0;
+      let childCount = 0;
+      let child = this.firstChild;
+      while (child != null) {
+        let childSize = layoutChild(child, childConstraints);
+        let childMainAxisExtent = this[_getMainAxisExtent](childSize);
+        let childCrossAxisExtent = this[_getCrossAxisExtent](childSize);
+        if (childCount > 0 && runMainAxisExtent + childMainAxisExtent + this.spacing > mainAxisLimit) {
+          mainAxisExtent = math.max(core.double, mainAxisExtent, runMainAxisExtent);
+          crossAxisExtent = crossAxisExtent + (runCrossAxisExtent + this.runSpacing);
+          runMainAxisExtent = 0.0;
+          runCrossAxisExtent = 0.0;
+          childCount = 0;
+        }
+        runMainAxisExtent = runMainAxisExtent + childMainAxisExtent;
+        runCrossAxisExtent = math.max(core.double, runCrossAxisExtent, childCrossAxisExtent);
+        if (childCount > 0) runMainAxisExtent = runMainAxisExtent + this.spacing;
+        childCount = childCount + 1;
+        child = this.childAfter(child);
+      }
+      crossAxisExtent = crossAxisExtent + runCrossAxisExtent;
+      mainAxisExtent = math.max(core.double, mainAxisExtent, runMainAxisExtent);
+      switch (this.direction) {
+        case C[11] || CT.C11:
+        {
+          return constraints.constrain(new ui.Size.new(mainAxisExtent, crossAxisExtent));
+        }
+        case C[14] || CT.C14:
+        {
+          return constraints.constrain(new ui.Size.new(crossAxisExtent, mainAxisExtent));
+        }
+      }
+    }
+    performLayout() {
+      let constraints = this.constraints;
+      if (!this[_debugHasNecessaryDirections]) dart.assertFailed(null, I[1], 572, 12, "_debugHasNecessaryDirections");
+      this[_hasVisualOverflow] = false;
+      let child = this.firstChild;
+      if (child == null) {
+        this.size = constraints.smallest;
+        return;
+      }
+      let childConstraints = null;
+      let mainAxisLimit = 0.0;
+      let flipMainAxis = false;
+      let flipCrossAxis = false;
+      switch (this.direction) {
+        case C[11] || CT.C11:
+        {
+          childConstraints = new box.BoxConstraints.new({maxWidth: constraints.maxWidth});
+          mainAxisLimit = constraints.maxWidth;
+          if (this.textDirection === ui.TextDirection.rtl) flipMainAxis = true;
+          if (this.verticalDirection === basic_types.VerticalDirection.up) flipCrossAxis = true;
+          break;
+        }
+        case C[14] || CT.C14:
+        {
+          childConstraints = new box.BoxConstraints.new({maxHeight: constraints.maxHeight});
+          mainAxisLimit = constraints.maxHeight;
+          if (this.verticalDirection === basic_types.VerticalDirection.up) flipMainAxis = true;
+          if (this.textDirection === ui.TextDirection.rtl) flipCrossAxis = true;
+          break;
+        }
+      }
+      if (!(childConstraints !== null)) dart.assertFailed(null, I[1], 601, 12, "childConstraints != null");
+      if (!(mainAxisLimit !== null)) dart.assertFailed(null, I[1], 602, 12, "mainAxisLimit != null");
+      let spacing = this.spacing;
+      let runSpacing = this.runSpacing;
+      let runMetrics = T.JSArrayOf_RunMetrics().of([]);
+      let mainAxisExtent = 0.0;
+      let crossAxisExtent = 0.0;
+      let runMainAxisExtent = 0.0;
+      let runCrossAxisExtent = 0.0;
+      let childCount = 0;
+      while (child != null) {
+        child.layout(childConstraints, {parentUsesSize: true});
+        let childMainAxisExtent = this[_getMainAxisExtent](child.size);
+        let childCrossAxisExtent = this[_getCrossAxisExtent](child.size);
+        if (childCount > 0 && runMainAxisExtent + spacing + childMainAxisExtent > mainAxisLimit) {
+          mainAxisExtent = math.max(core.double, mainAxisExtent, runMainAxisExtent);
+          crossAxisExtent = crossAxisExtent + runCrossAxisExtent;
+          if (runMetrics[$isNotEmpty]) crossAxisExtent = crossAxisExtent + runSpacing;
+          runMetrics[$add](new wrap._RunMetrics.new(runMainAxisExtent, runCrossAxisExtent, childCount));
+          runMainAxisExtent = 0.0;
+          runCrossAxisExtent = 0.0;
+          childCount = 0;
+        }
+        runMainAxisExtent = runMainAxisExtent + childMainAxisExtent;
+        if (childCount > 0) runMainAxisExtent = runMainAxisExtent + spacing;
+        runCrossAxisExtent = math.max(core.double, runCrossAxisExtent, childCrossAxisExtent);
+        childCount = childCount + 1;
+        let childParentData = wrap.WrapParentData.as(dart.nullCheck(child.parentData));
+        childParentData[_runIndex] = runMetrics[$length];
+        child = childParentData.nextSibling;
+      }
+      if (childCount > 0) {
+        mainAxisExtent = math.max(core.double, mainAxisExtent, runMainAxisExtent);
+        crossAxisExtent = crossAxisExtent + runCrossAxisExtent;
+        if (runMetrics[$isNotEmpty]) crossAxisExtent = crossAxisExtent + runSpacing;
+        runMetrics[$add](new wrap._RunMetrics.new(runMainAxisExtent, runCrossAxisExtent, childCount));
+      }
+      let runCount = runMetrics[$length];
+      if (!(runCount > 0)) dart.assertFailed(null, I[1], 643, 12, "runCount > 0");
+      let containerMainAxisExtent = 0.0;
+      let containerCrossAxisExtent = 0.0;
+      switch (this.direction) {
+        case C[11] || CT.C11:
+        {
+          this.size = constraints.constrain(new ui.Size.new(mainAxisExtent, crossAxisExtent));
+          containerMainAxisExtent = this.size.width;
+          containerCrossAxisExtent = this.size.height;
+          break;
+        }
+        case C[14] || CT.C14:
+        {
+          this.size = constraints.constrain(new ui.Size.new(crossAxisExtent, mainAxisExtent));
+          containerMainAxisExtent = this.size.height;
+          containerCrossAxisExtent = this.size.width;
+          break;
+        }
+      }
+      this[_hasVisualOverflow] = containerMainAxisExtent < mainAxisExtent || containerCrossAxisExtent < crossAxisExtent;
+      let crossAxisFreeSpace = math.max(core.double, 0.0, containerCrossAxisExtent - crossAxisExtent);
+      let runLeadingSpace = 0.0;
+      let runBetweenSpace = 0.0;
+      switch (this.runAlignment) {
+        case C[0] || CT.C0:
+        {
+          break;
+        }
+        case C[1] || CT.C1:
+        {
+          runLeadingSpace = crossAxisFreeSpace;
+          break;
+        }
+        case C[2] || CT.C2:
+        {
+          runLeadingSpace = crossAxisFreeSpace / 2.0;
+          break;
+        }
+        case C[3] || CT.C3:
+        {
+          runBetweenSpace = runCount > 1 ? crossAxisFreeSpace / (runCount - 1) : 0.0;
+          break;
+        }
+        case C[4] || CT.C4:
+        {
+          runBetweenSpace = crossAxisFreeSpace / runCount;
+          runLeadingSpace = runBetweenSpace / 2.0;
+          break;
+        }
+        case C[5] || CT.C5:
+        {
+          runBetweenSpace = crossAxisFreeSpace / (runCount + 1);
+          runLeadingSpace = runBetweenSpace;
+          break;
+        }
+      }
+      runBetweenSpace = runBetweenSpace + runSpacing;
+      let crossAxisOffset = flipCrossAxis ? containerCrossAxisExtent - runLeadingSpace : runLeadingSpace;
+      child = this.firstChild;
+      for (let i = 0; i < runCount; i = i + 1) {
+        let metrics = runMetrics[$_get](i);
+        let runMainAxisExtent = metrics.mainAxisExtent;
+        let runCrossAxisExtent = metrics.crossAxisExtent;
+        let childCount = metrics.childCount;
+        let mainAxisFreeSpace = math.max(core.double, 0.0, containerMainAxisExtent - runMainAxisExtent);
+        let childLeadingSpace = 0.0;
+        let childBetweenSpace = 0.0;
+        switch (this.alignment) {
+          case C[0] || CT.C0:
+          {
+            break;
+          }
+          case C[1] || CT.C1:
+          {
+            childLeadingSpace = mainAxisFreeSpace;
+            break;
+          }
+          case C[2] || CT.C2:
+          {
+            childLeadingSpace = mainAxisFreeSpace / 2.0;
+            break;
+          }
+          case C[3] || CT.C3:
+          {
+            childBetweenSpace = childCount > 1 ? mainAxisFreeSpace / (childCount - 1) : 0.0;
+            break;
+          }
+          case C[4] || CT.C4:
+          {
+            childBetweenSpace = mainAxisFreeSpace / childCount;
+            childLeadingSpace = childBetweenSpace / 2.0;
+            break;
+          }
+          case C[5] || CT.C5:
+          {
+            childBetweenSpace = mainAxisFreeSpace / (childCount + 1);
+            childLeadingSpace = childBetweenSpace;
+            break;
+          }
+        }
+        childBetweenSpace = childBetweenSpace + spacing;
+        let childMainPosition = flipMainAxis ? containerMainAxisExtent - childLeadingSpace : childLeadingSpace;
+        if (flipCrossAxis) crossAxisOffset = crossAxisOffset - runCrossAxisExtent;
+        while (child != null) {
+          let childParentData = wrap.WrapParentData.as(dart.nullCheck(child.parentData));
+          if (childParentData[_runIndex] !== i) break;
+          let childMainAxisExtent = this[_getMainAxisExtent](child.size);
+          let childCrossAxisExtent = this[_getCrossAxisExtent](child.size);
+          let childCrossAxisOffset = this[_getChildCrossAxisOffset](flipCrossAxis, runCrossAxisExtent, childCrossAxisExtent);
+          if (flipMainAxis) childMainPosition = childMainPosition - childMainAxisExtent;
+          childParentData.offset = this[_getOffset](childMainPosition, crossAxisOffset + childCrossAxisOffset);
+          if (flipMainAxis)
+            childMainPosition = childMainPosition - childBetweenSpace;
+          else
+            childMainPosition = childMainPosition + (childMainAxisExtent + childBetweenSpace);
+          child = childParentData.nextSibling;
+        }
+        if (flipCrossAxis)
+          crossAxisOffset = crossAxisOffset - runBetweenSpace;
+        else
+          crossAxisOffset = crossAxisOffset + (runCrossAxisExtent + runBetweenSpace);
+      }
+    }
+    hitTestChildren(result, opts) {
+      let position = opts && 'position' in opts ? opts.position : null;
+      return this.defaultHitTestChildren(result, {position: position});
+    }
+    paint(context, offset) {
+      if (this[_hasVisualOverflow] && this.clipBehavior !== ui.Clip.none) {
+        this[_clipRectLayer] = context.pushClipRect(this.needsCompositing, offset, ui.Offset.zero['&'](this.size), dart.bind(this, 'defaultPaint'), {clipBehavior: this.clipBehavior, oldLayer: this[_clipRectLayer]});
+      } else {
+        this[_clipRectLayer] = null;
+        this.defaultPaint(context, offset);
+      }
+    }
+    debugFillProperties(properties) {
+      super.debugFillProperties(properties);
+      properties.add(new (T.EnumPropertyOfAxis()).new("direction", this.direction));
+      properties.add(new (T.EnumPropertyOfWrapAlignment()).new("alignment", this.alignment));
+      properties.add(new diagnostics.DoubleProperty.new("spacing", this.spacing));
+      properties.add(new (T.EnumPropertyOfWrapAlignment()).new("runAlignment", this.runAlignment));
+      properties.add(new diagnostics.DoubleProperty.new("runSpacing", this.runSpacing));
+      properties.add(new diagnostics.DoubleProperty.new("crossAxisAlignment", this.runSpacing));
+      properties.add(new (T.EnumPropertyOfTextDirection()).new("textDirection", this.textDirection, {defaultValue: null}));
+      properties.add(new (T.EnumPropertyOfVerticalDirection()).new("verticalDirection", this.verticalDirection, {defaultValue: basic_types.VerticalDirection.down}));
     }
   };
-  (page_view._PageViewState.new = function() {
-    this[_lastReportedPage] = 0;
-    page_view._PageViewState.__proto__.new.call(this);
-    ;
-  }).prototype = page_view._PageViewState.prototype;
-  dart.addTypeTests(page_view._PageViewState);
-  dart.addTypeCaches(page_view._PageViewState);
-  dart.setMethodSignature(page_view._PageViewState, () => ({
-    __proto__: dart.getMethods(page_view._PageViewState.__proto__),
-    [_getDirection]: dart.fnType(basic_types.AxisDirection, [framework.BuildContext]),
-    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  (wrap.RenderWrap.new = function(opts) {
+    let children = opts && 'children' in opts ? opts.children : null;
+    let direction = opts && 'direction' in opts ? opts.direction : C[11] || CT.C11;
+    let alignment = opts && 'alignment' in opts ? opts.alignment : C[0] || CT.C0;
+    let spacing = opts && 'spacing' in opts ? opts.spacing : 0;
+    let runAlignment = opts && 'runAlignment' in opts ? opts.runAlignment : C[0] || CT.C0;
+    let runSpacing = opts && 'runSpacing' in opts ? opts.runSpacing : 0;
+    let crossAxisAlignment = opts && 'crossAxisAlignment' in opts ? opts.crossAxisAlignment : C[7] || CT.C7;
+    let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
+    let verticalDirection = opts && 'verticalDirection' in opts ? opts.verticalDirection : C[12] || CT.C12;
+    let clipBehavior = opts && 'clipBehavior' in opts ? opts.clipBehavior : C[13] || CT.C13;
+    this[_clipBehavior] = ui.Clip.none;
+    this[_hasVisualOverflow] = false;
+    this[_clipRectLayer] = null;
+    if (!(direction !== null)) dart.assertFailed(null, I[1], 124, 15, "direction != null");
+    if (!(alignment !== null)) dart.assertFailed(null, I[1], 125, 15, "alignment != null");
+    if (!(spacing !== null)) dart.assertFailed(null, I[1], 126, 15, "spacing != null");
+    if (!(runAlignment !== null)) dart.assertFailed(null, I[1], 127, 15, "runAlignment != null");
+    if (!(runSpacing !== null)) dart.assertFailed(null, I[1], 128, 15, "runSpacing != null");
+    if (!(crossAxisAlignment !== null)) dart.assertFailed(null, I[1], 129, 15, "crossAxisAlignment != null");
+    if (!(clipBehavior !== null)) dart.assertFailed(null, I[1], 130, 15, "clipBehavior != null");
+    this[_direction] = direction;
+    this[_alignment] = alignment;
+    this[_spacing] = spacing;
+    this[_runAlignment] = runAlignment;
+    this[_runSpacing] = runSpacing;
+    this[_crossAxisAlignment] = crossAxisAlignment;
+    this[_textDirection] = textDirection;
+    this[_verticalDirection] = verticalDirection;
+    this[_clipBehavior] = clipBehavior;
+    wrap.RenderWrap.__proto__.new.call(this);
+    this.addAll(children);
+  }).prototype = wrap.RenderWrap.prototype;
+  dart.addTypeTests(wrap.RenderWrap);
+  dart.addTypeCaches(wrap.RenderWrap);
+  dart.setMethodSignature(wrap.RenderWrap, () => ({
+    __proto__: dart.getMethods(wrap.RenderWrap.__proto__),
+    [_getMainAxisExtent]: dart.fnType(core.double, [ui.Size]),
+    [_getCrossAxisExtent]: dart.fnType(core.double, [ui.Size]),
+    [_getOffset]: dart.fnType(ui.Offset, [core.double, core.double]),
+    [_getChildCrossAxisOffset]: dart.fnType(core.double, [core.bool, core.double, core.double]),
+    [_computeDryLayout]: dart.fnType(ui.Size, [box.BoxConstraints], [dart.fnType(ui.Size, [box.RenderBox, box.BoxConstraints])])
   }));
-  dart.setLibraryUri(page_view._PageViewState, I[1]);
-  dart.setFieldSignature(page_view._PageViewState, () => ({
-    __proto__: dart.getFields(page_view._PageViewState.__proto__),
-    [_lastReportedPage]: dart.fieldType(core.int)
+  dart.setGetterSignature(wrap.RenderWrap, () => ({
+    __proto__: dart.getGetters(wrap.RenderWrap.__proto__),
+    direction: basic_types.Axis,
+    alignment: wrap.WrapAlignment,
+    spacing: core.double,
+    runAlignment: wrap.WrapAlignment,
+    runSpacing: core.double,
+    crossAxisAlignment: wrap.WrapCrossAlignment,
+    textDirection: dart.nullable(ui.TextDirection),
+    verticalDirection: basic_types.VerticalDirection,
+    clipBehavior: ui.Clip,
+    [_debugHasNecessaryDirections]: core.bool
   }));
-  var ScrollPhysics_parent = dart.privateName(scroll_physics, "ScrollPhysics.parent");
-  dart.defineLazy(page_view, {
-    /*page_view._defaultPageController*/get _defaultPageController() {
-      return new page_view.PageController.new();
-    },
-    /*page_view._kPagePhysics*/get _kPagePhysics() {
-      return C[37] || CT.C37;
-    }
-  }, false);
-  dart.trackLibraries("packages/flutter/src/widgets/page_view.dart", {
-    "package:flutter/src/widgets/page_view.dart": page_view
+  dart.setSetterSignature(wrap.RenderWrap, () => ({
+    __proto__: dart.getSetters(wrap.RenderWrap.__proto__),
+    direction: basic_types.Axis,
+    alignment: wrap.WrapAlignment,
+    spacing: core.double,
+    runAlignment: wrap.WrapAlignment,
+    runSpacing: core.double,
+    crossAxisAlignment: wrap.WrapCrossAlignment,
+    textDirection: dart.nullable(ui.TextDirection),
+    verticalDirection: basic_types.VerticalDirection,
+    clipBehavior: ui.Clip
+  }));
+  dart.setLibraryUri(wrap.RenderWrap, I[0]);
+  dart.setFieldSignature(wrap.RenderWrap, () => ({
+    __proto__: dart.getFields(wrap.RenderWrap.__proto__),
+    [_direction]: dart.fieldType(basic_types.Axis),
+    [_alignment]: dart.fieldType(wrap.WrapAlignment),
+    [_spacing]: dart.fieldType(core.double),
+    [_runAlignment]: dart.fieldType(wrap.WrapAlignment),
+    [_runSpacing]: dart.fieldType(core.double),
+    [_crossAxisAlignment]: dart.fieldType(wrap.WrapCrossAlignment),
+    [_textDirection]: dart.fieldType(dart.nullable(ui.TextDirection)),
+    [_verticalDirection]: dart.fieldType(basic_types.VerticalDirection),
+    [_clipBehavior]: dart.fieldType(ui.Clip),
+    [_hasVisualOverflow]: dart.fieldType(core.bool),
+    [_clipRectLayer]: dart.fieldType(dart.nullable(layer.ClipRectLayer))
+  }));
+  dart.trackLibraries("packages/flutter/src/rendering/wrap.dart", {
+    "package:flutter/src/rendering/wrap.dart": wrap
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["page_view.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/flutter/src/widgets/page_view.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["wrap.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/flutter/src/rendering/wrap.dart.lib.js"}');
   // Exports:
   return {
-    src__widgets__page_view: page_view
+    src__rendering__wrap: wrap
   };
 }));
 
-//# sourceMappingURL=page_view.dart.lib.js.map
+//# sourceMappingURL=wrap.dart.lib.js.map
